@@ -8838,8 +8838,8 @@ static struct builtins {
     { "Import", bImport, 0,0,0 },
     { "Export", bExport, 0,0,0 },
     { "FontImage", bFontImage, 0,0,0 },
-    { "MergeKern", bMergeKern, 0,3,v_str },
-    { "MergeFeature", bMergeKern, 0,3,v_str },
+    { "MergeKern", bMergeKern, 0,2,v_str },
+    { "MergeFeature", bMergeKern, 0,2,v_str },
     { "PrintSetup", bPrintSetup, 1,0,0 },
     { "PrintFont", bPrintFont, 0,0,0 },
 /* Edit Menu */

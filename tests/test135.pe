@@ -16,7 +16,7 @@ Select("D")
 SetGlyphName("D")
 SetWidth(100)
 
-MergeFeature($1,"0")
+MergeFeature($1)
 
 Select("A")
 if (GlyphInfo("Class") != "base")
