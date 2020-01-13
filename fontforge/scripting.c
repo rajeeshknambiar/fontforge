@@ -2526,12 +2526,12 @@ static void bFontImage(Context *c) {
 
 //mergeFeature("feature_file", bool ignore_non_applicable_features)
 static void bMergeKern(Context *c) {
-    char *t; char *locfilename; bool ignore_na_feature=FALSE;
+    char *t; char *locfilename; bool ignore_invalid=FALSE;
 
     t = script2utf8_copy(c->a.vals[1].u.sval);
     locfilename = utf82def_copy(t);
-    ignore_na_feature = c->a.vals[2].u.sval;
-    if ( !LoadKerningDataFromMetricsFile(c->curfv->sf,locfilename,c->curfv->map,ignore_na_feature))
+    ignore_invalid = c->a.vals[2].u.sval;
+    if ( !LoadKerningDataFromMetricsFile(c->curfv->sf,locfilename,c->curfv->map,ignore_invalid))
 	ScriptError( c, "Failed to find kern info in file" );
     free(locfilename); free(t);
 }
