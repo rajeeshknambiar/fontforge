@@ -1045,7 +1045,7 @@ void MergeKernInfo(SplineFont *sf,EncMap *map) {
 return;				/* Cancelled */
     temp = utf82def_copy(ret);
 
-    if ( !LoadKerningDataFromMetricsFile(sf,temp,map))
+    if ( !LoadKerningDataFromMetricsFile(sf,temp,map,FALSE))    //TODO: add option for 'ignore non applicable features'
 	ff_post_error(_("Load of Kerning Metrics Failed"),_("Failed to load kern data from %s"), temp);
     free(ret); free(temp);
 }

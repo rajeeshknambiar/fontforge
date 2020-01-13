@@ -2524,12 +2524,14 @@ static void bFontImage(Context *c) {
     free(t);
 }
 
+//mergeFeature("feature_file", bool ignore_non_applicable_features)
 static void bMergeKern(Context *c) {
-    char *t; char *locfilename;
+    char *t; char *locfilename; bool ignore_na_feature=FALSE;
 
     t = script2utf8_copy(c->a.vals[1].u.sval);
     locfilename = utf82def_copy(t);
-    if ( !LoadKerningDataFromMetricsFile(c->curfv->sf,locfilename,c->curfv->map))
+    ignore_na_feature = c->a.vals[2].u.sval;
+    if ( !LoadKerningDataFromMetricsFile(c->curfv->sf,locfilename,c->curfv->map,ignore_na_feature))
 	ScriptError( c, "Failed to find kern info in file" );
     free(locfilename); free(t);
 }
@@ -8836,8 +8838,8 @@ static struct builtins {
     { "Import", bImport, 0,0,0 },
     { "Export", bExport, 0,0,0 },
     { "FontImage", bFontImage, 0,0,0 },
-    { "MergeKern", bMergeKern, 0,2,v_str },
-    { "MergeFeature", bMergeKern, 0,2,v_str },
+    { "MergeKern", bMergeKern, 0,3,v_str },
+    { "MergeFeature", bMergeKern, 0,3,v_str },
     { "PrintSetup", bPrintSetup, 1,0,0 },
     { "PrintFont", bPrintFont, 0,0,0 },
 /* Edit Menu */
