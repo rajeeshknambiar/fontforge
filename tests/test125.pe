@@ -11,7 +11,7 @@ endif
 Close()
 
 New()
-MergeFeature($1)
+MergeFeature($1,"0")
 Generate("Untitled2.otf")
 Open("Untitled2.otf")
 if ( SizeOf(GetLookups("GSUB"))<=0 )

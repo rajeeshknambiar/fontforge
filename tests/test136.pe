@@ -12,7 +12,7 @@ Select("C")
 SetGlyphName("C")
 SetWidth(100)
 
-MergeFeature($1)
+MergeFeature($1,"0")
 
 lookups = GetLookups("GSUB")
 if (SizeOf(lookups) != 4)
