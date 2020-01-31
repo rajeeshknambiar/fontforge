@@ -1,5 +1,4 @@
 /* Copyright (C) 2000-2012 by George Williams */
-/* Copyright (C) 2020 by Rajeesh KV <rajeeshknambiar@gmail.com> */
 /*
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -1030,7 +1029,7 @@ char *GetPostScriptFontName(char *dir, int mult) {
 return( temp );
 }
 
-struct gfc_data {
+struct gfc_data {   //GFileChooser
     int done;
     int ret;
     GGadget *gfc;
@@ -1039,7 +1038,7 @@ struct gfc_data {
     EncMap *map;
 };
 
-static int e_h(GWindow gw, GEvent *event) {
+static int feat_e_h(GWindow gw, GEvent *event) {
     if ( event->type==et_close ) {
     struct gfc_data *d = GDrawGetUserData(gw);
     d->done = true;
@@ -1095,10 +1094,8 @@ static int FEAT_Cancel(GGadget *g, GEvent *e) {
 
 void MergeKernInfo(SplineFont *sf,EncMap *map) {
 #ifndef __Mac
-    static unichar_t wild[] = {'*','.','{','a','f','m',',','t','f','m',',','o','f','m',',','p','f','m',',','b','i','n',',','h','q','x',',','d','f','o','n','t',',','f','e','a','t','u','r','e',',','f','e','a','t',',','f','e','a','}'
-};
-    static unichar_t wild2[] = {'*','.','{','a','f','m',',','a','m','f','m',',','t','f','m',',','o','f','m',',','p','f','m',',','b','i','n',',','h','q','x',',','d','f','o','n','t',',','f','e','a','t','u','r','e',',','f','e','a','t',',','f','e','a','}'
-};
+    static unichar_t wild[] = {'*','.','{','a','f','m',',','t','f','m',',','o','f','m',',','p','f','m',',','b','i','n',',','h','q','x',',','d','f','o','n','t',',','f','e','a','t','u','r','e',',','f','e','a','t',',','f','e','a','}'};
+    static unichar_t wild2[] = {'*','.','{','a','f','m',',','a','m','f','m',',','t','f','m',',','o','f','m',',','p','f','m',',','b','i','n',',','h','q','x',',','d','f','o','n','t',',','f','e','a','t','u','r','e',',','f','e','a','t',',','f','e','a','}'};
 #else
     static unichar_t wild[] = {'*'};	/* Mac resource files generally don't have extensions */
     static unichar_t wild2[] = {'*'};
@@ -1125,7 +1122,7 @@ void MergeKernInfo(SplineFont *sf,EncMap *map) {
     bsbigger = 3*bs+4*14>scalewid; scalewid = bsbigger?3*bs+4*12:scalewid;
     pos.width = GDrawPointsToPixels(NULL,scalewid);
     pos.height = GDrawPointsToPixels(NULL,255);
-    gw = GDrawCreateTopWindow(NULL,&pos,e_h,&d,&wattrs);
+    gw = GDrawCreateTopWindow(NULL,&pos,feat_e_h,&d,&wattrs);
 
     memset(&label,0,sizeof(label));
     memset(&gcd,0,sizeof(gcd));
