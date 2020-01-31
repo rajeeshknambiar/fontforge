@@ -1,6 +1,7 @@
 /* Copyright (C) 2000-2012 by George Williams */
 /* Copyright (C) 2012-2013 by Khaled Hosny */
 /* Copyright (C) 2013 by Matthew Skala */
+/* Copyright (C) 2020 by Rajeesh KV */
 /*
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
