@@ -1094,11 +1094,11 @@ static int FEAT_Cancel(GGadget *g, GEvent *e) {
 
 void MergeKernInfo(SplineFont *sf,EncMap *map) {
 #ifndef __Mac
-    static unichar_t wild[] = {'*','.','{','a','f','m',',','t','f','m',',','o','f','m',',','p','f','m',',','b','i','n',',','h','q','x',',','d','f','o','n','t',',','f','e','a','t','u','r','e',',','f','e','a','t',',','f','e','a','}'};
-    static unichar_t wild2[] = {'*','.','{','a','f','m',',','a','m','f','m',',','t','f','m',',','o','f','m',',','p','f','m',',','b','i','n',',','h','q','x',',','d','f','o','n','t',',','f','e','a','t','u','r','e',',','f','e','a','t',',','f','e','a','}'};
+    static char wild[] = "*.{afm,tfm,ofm,pfm,bin,hqx,dfont,feature,feat,fea}";
+    static char wild2[] = "*.{afm,amfm,tfm,ofm,pfm,bin,hqx,dfont,feature,feat,fea}";
 #else
-    static unichar_t wild[] = {'*'};	/* Mac resource files generally don't have extensions */
-    static unichar_t wild2[] = {'*'};
+    static char wild[] = "*";	/* Mac resource files generally don't have extensions */
+    static char wild2[] = "*";
 #endif
     GRect pos;
     GWindow gw;
@@ -1198,7 +1198,7 @@ void MergeKernInfo(SplineFont *sf,EncMap *map) {
     GGadgetSetUserData(gcd[2].ret,gcd[0].ret);
 
     GFileChooserConnectButtons(gcd[0].ret,gcd[1].ret,gcd[2].ret);
-    GFileChooserSetFilterText(gcd[0].ret, sf->mm!=NULL?wild2:wild);
+    GFileChooserSetFilterText8(gcd[0].ret, sf->mm!=NULL?wild2:wild);
     GFileChooserRefreshList(gcd[0].ret);
     GHVBoxFitWindow(boxes[0].ret);
 
